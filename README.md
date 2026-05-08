@@ -48,3 +48,38 @@ npx jest src/usecase/product/create/create.product.unit.spec.ts
 - `src/usecase/product/update` — atualização
 
 Cada pasta contém DTOs, implementação do caso de uso, teste de unidade (mocks) e teste de integração (banco em memória).
+
+## API (Web)
+
+A aplicação Express sobe com:
+
+```bash
+npm run dev
+```
+
+Por padrão o servidor escuta na porta `3000` (ou o valor de `PORT` no `.env`).
+
+### Produtos
+
+- `GET /product` — lista produtos (JSON por padrão; envie `Accept: application/xml` para XML).
+
+Exemplo:
+
+```bash
+curl -s http://localhost:3000/product
+curl -s -H "Accept: application/xml" http://localhost:3000/product
+```
+
+## Testes E2E
+
+Os testes de API ficam em `src/infrastructure/api/__tests__/` (customer e product). Para rodar apenas os E2E de produto:
+
+```bash
+npx jest product.e2e
+```
+
+Para rodar toda a suíte (incluindo E2E):
+
+```bash
+npm test
+```
