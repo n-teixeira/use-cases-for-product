@@ -49,6 +49,16 @@ npx jest src/usecase/product/create/create.product.unit.spec.ts
 
 Cada pasta contém DTOs, implementação do caso de uso, teste de unidade (mocks) e teste de integração (banco em memória).
 
+## Entidade Product e Notification Pattern
+
+A validação da entidade `Product` (e `ProductB`) usa o `Notification` do domínio compartilhado: os erros são acumulados e, se houver inconsistências, é lançado `NotificationError` (com todas as mensagens). Os testes cobrem o caso obrigatório de **múltiplos erros de uma vez** (ex.: nome vazio e preço negativo).
+
+Para rodar só os testes unitários da entidade:
+
+```bash
+npx jest src/domain/product/entity/product.spec.ts
+```
+
 ## API (Web)
 
 A aplicação Express sobe com:
