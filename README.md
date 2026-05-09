@@ -51,9 +51,10 @@ Cada pasta contém DTOs, implementação do caso de uso, teste de unidade (mocks
 
 ## Entidade Product e Notification Pattern
 
-A validação da entidade `Product` (e `ProductB`) usa o `Notification` do domínio compartilhado: os erros são acumulados e, se houver inconsistências, é lançado `NotificationError` (com todas as mensagens). Os testes cobrem o caso obrigatório de **múltiplos erros de uma vez** (ex.: nome vazio e preço negativo).
+A validação é feita por `ProductYupValidator` (Yup, `abortEarly: false`) instanciada via `ProductValidatorFactory`, preenchendo o `Notification` da entidade — ver `src/domain/product/validator/` e `product.validator.factory.ts`.
 
 Para rodar só os testes unitários da entidade:
+
 
 ```bash
 npx jest src/domain/product/entity/product.spec.ts
